@@ -30,6 +30,7 @@ def sort_posts():
             media_posts.append(post)
         else:
             pass
+    print(len(media_posts))
     return media_posts, text_posts
 
 def gen_media_obj(media_posts):
@@ -38,9 +39,10 @@ def gen_media_obj(media_posts):
         file_name = './images/' + url.split('/')[-1]
         response = requests.get(url)
         image = response.content
-
+        print(url)
         with open(file_name, 'wb') as data:
             data.write(image)
+    print(len(media_posts))
 
 def test(media_posts):
     for i, post in enumerate(media_posts):
@@ -61,8 +63,8 @@ def test(media_posts):
 
 def main():
     media_posts, text_posts = sort_posts()
-    #gen_media_obj(media_posts)    
-    test(media_posts)    
+    gen_media_obj(media_posts)    
+    #test(media_posts)    
     
 
 
