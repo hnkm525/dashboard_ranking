@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from .models import PostModel
 
 def get_textlist(request):
-    return render(request, 'text.html')
+    text_list = PostModel.objects.all()
+    return render(request, 'text.html', {'object_list':text_list})
 
 def get_photolist(request):
-    return render(request, 'photo.html')
+    photo_list = PostModel.objects.all().order_by('note_count')
+    return render(request, 'photo.html', {'object_list':photo_list})

@@ -1,0 +1,6 @@
+{% block content %}
+    {% for item in object_list %}
+    <a href={{ item.link }}>
+    <img src='{{ item.images.url }}'>
+    {% endfor %}
+{% endblock content %}
