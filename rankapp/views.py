@@ -7,5 +7,5 @@ def get_textlist(request):
     return render(request, 'text.html', {'object_list':text_list})
 
 def get_photolist(request):
-    photo_list = PostModel.objects.all().order_by('note_count')
+    photo_list = PostModel.objects.all()
     return render(request, 'photo.html', {'object_list':photo_list})

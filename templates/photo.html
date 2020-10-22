@@ -1,6 +1,18 @@
+{% extends 'base.html' %}
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    ダッシュボード人気ランキング
+</div>
+{% endblock header %}
+
 {% block content %}
-    {% for item in object_list %}
-    <a href={{ item.link }}>
-    <img src='{{ item.images.url }}'>
-    {% endfor %}
+<div class='container'>
+    <div class="h-auto d-inline-block align-top" style="width: 120px; background-color: rgba(0,0,255,.1)">
+        {% for item in object_list %}
+        <a href={{ item.link }}>
+        <img src='{{ item.images.url }}'></a>
+        {% endfor %}
+
+    </div>
+</div>
 {% endblock content %}
