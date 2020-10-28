@@ -50,11 +50,14 @@ class Command(BaseCommand):
                 PostModel.objects.create(post_type = 'media',
                                          post_url = post['post_url'],
                                          note_count = post['note_count'],
+                                         blog_name = post['blog_name'],
+                                         blog_url = post['blog']['url'],
                                          title = 'title',
                                          body = 'body',
                                          caption = post['caption'],
                                          link = post['post_url'],
-                                         images = post['photos'][0]['original_size']['url'].split('/')[-1]
+                                         images = post['photos'][0]['original_size']['url'].split('/')[-1],
+                                         summary = post['summary']
                                         )
             else:
                 self.allok = False
