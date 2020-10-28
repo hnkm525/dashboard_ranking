@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '86ihywk8um%u9@-*f7@7kl_1)233g5@0fg6l4ad7^=t8b3z0o+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lime-sandwich.com']
 
 # Application definition
 
@@ -93,9 +93,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -109,11 +109,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# デバッグ用
+# for debag
+"""
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+"""
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+STATIC_ROOT = '/usr/share/nginx/html/static'
 
-MEDIA_URL = '/images/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/usr/share/nginx/html/media'
