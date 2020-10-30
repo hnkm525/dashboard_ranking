@@ -13,7 +13,9 @@
         <img class="card-img-top" src="{{ item.images.url }}" alt="Card image cap">
         </a>
         <div class="card-body">
-            <p class="card-text">{{ item.summary }}</p>
+            <a href="{{ item.source_url }}">
+                <p class="card-text">{{ item.summary }}</p>
+            </a>
             <a href="{{ item.blog_url }}">
                 <p class="card-text">Posted by {{ item.blog_name }}</p>
             </a>

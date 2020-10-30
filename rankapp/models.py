@@ -16,3 +16,4 @@ class PostModel(models.Model):
     link = models.TextField(null=True, default='')
     images = models.ImageField(upload_to='', null=True, default='static/default.png')
     summary = models.TextField(null=True, default='')
+    source_url = models.TextField(null=True, default='')

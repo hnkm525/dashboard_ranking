@@ -65,7 +65,8 @@ class Command(BaseCommand):
                                          caption = post['caption'],
                                          link = post['post_url'],
                                          images = post['photos'][0]['original_size']['url'].split('/')[-1],
-                                         summary = post['summary']
+                                         summary = post['summary'],
+                                         source_url = post['source_url']
                                         )
                     posted_url.append(post['post_url'])
             else:
