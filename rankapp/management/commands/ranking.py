@@ -55,20 +55,36 @@ class Command(BaseCommand):
                 if post['post_url'] in posted_url:
                     pass
                 else:
-                    PostModel.objects.create(post_type = 'media',
-                                         post_url = post['post_url'],
-                                         note_count = post['note_count'],
-                                         blog_name = post['blog_name'],
-                                         blog_url = post['blog']['url'],
-                                         title = 'title',
-                                         body = 'body',
-                                         caption = post['caption'],
-                                         link = post['post_url'],
-                                         images = post['photos'][0]['original_size']['url'].split('/')[-1],
-                                         summary = post['summary'],
-                                         source_url = post['source_url']
-                                        )
-                    posted_url.append(post['post_url'])
+                    try:
+                        PostModel.objects.create(post_type = 'media',
+                                            post_url = post['post_url'],
+                                            note_count = post['note_count'],
+                                            blog_name = post['blog_name'],
+                                            blog_url = post['blog']['url'],
+                                            title = 'title',
+                                            body = 'body',
+                                            caption = post['caption'],
+                                            link = post['post_url'],
+                                            images = post['photos'][0]['original_size']['url'].split('/')[-1],
+                                            summary = post['summary'],
+                                            source_url = post['source_url']
+                                            )
+                        posted_url.append(post['post_url'])
+                    except KeyError:
+                        PostModel.objects.create(post_type = 'media',
+                                            post_url = post['post_url'],
+                                            note_count = post['note_count'],
+                                            blog_name = post['blog_name'],
+                                            blog_url = post['blog']['url'],
+                                            title = 'title',
+                                            body = 'body',
+                                            caption = post['caption'],
+                                            link = post['post_url'],
+                                            images = post['photos'][0]['original_size']['url'].split('/')[-1],
+                                            summary = post['summary'],
+                                            )
+                        posted_url.append(post['post_url'])
+                        
             else:
                 self.allok = False
         if self.allok:
