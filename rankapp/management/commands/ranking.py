@@ -52,7 +52,9 @@ class Command(BaseCommand):
         for post in media_posts:
             # 画像がダウンロードできているか確認
             if os.path.isfile('/usr/share/nginx/html/media/' + post['photos'][0]['original_size']['url'].split('/')[-1]):
-                if not post['post_url'] in posted_url:
+                if post['post_url'] in posted_url:
+                    pass
+                else:
                     PostModel.objects.create(post_type = 'media',
                                          post_url = post['post_url'],
                                          note_count = post['note_count'],
