@@ -44,10 +44,16 @@ class Command(BaseCommand):
 
     def gen_media_obj(self, media_posts):
         self.allok = True
+        self.posted_img_url = []
+        genelated_img_list = PostModel.objects.all()
+        for item in genelated_img_list:
+            self.posted_img_url.append(item.images)
+
         for post in media_posts:
             # 画像がダウンロードできているか確認
             if os.path.isfile('/usr/share/nginx/html/media/' + post['photos'][0]['original_size']['url'].split('/')[-1]):
-                PostModel.objects.create(post_type = 'media',
+                if not post['photos'] in self.posted_img_url:
+                    PostModel.objects.create(post_type = 'media',
                                          post_url = post['post_url'],
                                          note_count = post['note_count'],
                                          blog_name = post['blog_name'],
