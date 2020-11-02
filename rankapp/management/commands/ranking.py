@@ -36,7 +36,7 @@ class Command(BaseCommand):
     def download_media(self, media_posts):
         for i, post in enumerate(media_posts):
             url = post['photos'][0]['original_size']['url']
-            file_name = './images/' + url.split('/')[-1]
+            file_name = '/usr/share/nginx/html/media/' + url.split('/')[-1]
             response = requests.get(url)
             image = response.content
             with open(file_name, 'wb') as data:
@@ -51,7 +51,7 @@ class Command(BaseCommand):
         
         for post in media_posts:
             # 画像がダウンロードできているか確認
-            if os.path.isfile('./images/' + post['photos'][0]['original_size']['url'].split('/')[-1]):
+            if os.path.isfile('/usr/share/nginx/html/media/' + post['photos'][0]['original_size']['url'].split('/')[-1]):
                 if post['post_url'] in posted_url:
                     pass
                 else:
