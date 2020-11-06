@@ -1,8 +1,8 @@
 # dashboard_ranking
+dashboard_ranking makes your Tumblr dashboard's daily ranking.  
 
 ## Overview
 Tumblrダッシュボードからライク・リブログの合計数が多いポスト順に抽出してランキング形式で表示する．  
-dashboard_ranking makes your Tumblr dashboard's daily ranking.  
 [Ex.](http://lime-sandwich.com/photo)
 
 ## Description
