@@ -38,4 +38,4 @@ $ python3 manage.py delete
 ```
 
 ## Author
-[hnkm525](https://github.com/hnkm525, "")
+[hnkm525](https://github.com/hnkm525 "")
