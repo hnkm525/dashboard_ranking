@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
+{% block title %}{{ block.super }} | ダッシュボード人気ランキング{% endblock title %}
+
 {% block header %}
 <div class="alert alert-primary" role="alert">
     ダッシュボード人気ランキング
 </div>
 {% endblock header %}
+
 
 {% block content %}
 <div class='container'>
@@ -13,16 +16,19 @@
         <img class="card-img-top" src="{{ item.images.url }}" alt="Card image cap">
         </a>
         <div class="card-body">
-            <a href="{{ item.source_url }}">
+            <a href="{{ item.source_url }}" target="_blank">
                 <p class="card-text">{{ item.summary }}</p>
             </a>
-            <a href="{{ item.blog_url }}">
+            <a href="{{ item.blog_url }} " target="_blank">
                 <p class="card-text">Posted by {{ item.blog_name }}</p>
             </a>
           
         </div>
       </div>
+      <p>
     {% endfor %}
-
+</div>
+<div class="alert alert-secondary" role="alert">
+    <p><a href="{% url 'home' %}">ホームページ</a></p>
 </div>
 {% endblock content %}

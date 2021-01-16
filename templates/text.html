@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    ダッシュボード人気ランキング
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<div class='container'>
+    {% for item in object_list %}
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <p>{{ item.title }}</p>
+            <p>{{ item.body }}</p>
+            <a href="{{ item.source_url }}" target="_blank">
+                <p class="card-text">{{ item.summary }}</p>
+            </a>
+            <a href="{{ item.blog_url }} " target="_blank">
+                <p class="card-text">Posted by {{ item.blog_name }}</p>
+            </a>
+          
+        </div>
+      </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}

@@ -42,19 +42,35 @@ class Command(BaseCommand):
             with open(file_name, 'wb') as data:
                 data.write(image)
 
+    def gen_text_obj(self, text_posts):
+        print(text_posts)
+        for post in text_posts:
+            try:
+                PostModel.objects.create(post_type = 'text',
+                    post_url = post['post_url'],
+                    note_count = post['note_count'],
+                    blog_name = post['blog_name'],
+                    blog_url = post['blog']['url'],
+                    title = post['title'],
+                    body = post['body'],
+                    caption = post['caption'],
+                    link = post['post_url'],
+                    images = '',
+                    summary = post['summary'],
+                    source_url = post['source_url']
+                    )
+            except:
+                print("生成にしっぱいしてるよ")
+
     def gen_media_obj(self, media_posts):
         self.allok = True
-        posted_url = []
-        genelated_img_list = PostModel.objects.all()
-        for item in genelated_img_list:
-            posted_url.append(item.post_url)
-        
+        downloaded_media = os.listdir('/usr/share/nginx/html/media/')
+        # print(downloaded_media)
         for post in media_posts:
             # 画像がダウンロードできているか確認
-            if os.path.isfile('/usr/share/nginx/html/media/' + post['photos'][0]['original_size']['url'].split('/')[-1]):
-                if post['post_url'] in posted_url:
-                    pass
-                else:
+            filename = post['photos'][0]['original_size']['url'].split('/')[-1]
+            if os.path.isfile('/usr/share/nginx/html/media/' + filename):
+                if filename in downloaded_media:
                     try:
                         PostModel.objects.create(post_type = 'media',
                                             post_url = post['post_url'],
@@ -65,11 +81,11 @@ class Command(BaseCommand):
                                             body = 'body',
                                             caption = post['caption'],
                                             link = post['post_url'],
-                                            images = post['photos'][0]['original_size']['url'].split('/')[-1],
+                                            images = filename,
                                             summary = post['summary'],
                                             source_url = post['source_url']
                                             )
-                        posted_url.append(post['post_url'])
+                        downloaded_media.remove(filename)
                     except KeyError:
                         PostModel.objects.create(post_type = 'media',
                                             post_url = post['post_url'],
@@ -80,10 +96,10 @@ class Command(BaseCommand):
                                             body = 'body',
                                             caption = post['caption'],
                                             link = post['post_url'],
-                                            images = post['photos'][0]['original_size']['url'].split('/')[-1],
+                                            images = filename,
                                             summary = post['summary'],
                                             )
-                        posted_url.append(post['post_url'])
+                        downloaded_media.remove(filename)
                         
             else:
                 self.allok = False
@@ -97,3 +113,5 @@ class Command(BaseCommand):
         media_posts, text_posts = self.sort_posts(posts)
         self.download_media(media_posts)
         self.gen_media_obj(media_posts)
+        self.gen_text_obj(text_posts)
+        

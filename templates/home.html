@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} | ホームページ{% endblock title %}
+{% block header %}
+<div class="alert alert-primary" role="alert">
+home
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<div class="container">
+    <h1>ここはどこ？</h1>
+    <p>ライムサンドイッチのホームページです．</p>
+    <p>趣味で作ったものとか置いてます．</p>
+    <h1>私は誰？</h1>
+    ライムサンドイッチです．
+    <h1>Works</h1>
+    <a href="https://github.com/hnkm525">GitHub</a><br>
+    <a href="https://github.com/hnkm525/erg_shintyokukun">erg進捗君(Chrome拡張機能)</a><br>
+    <a href="{% url 'photo' %}">ダッシュボード人気ランキング</a><br>
+    <h1>Access</h1>
+    問い合わせはこちらから<br>
+    <a href="mailto:tarakosuki98525mk2@gmail.com">Email</a>
+
+</div>
+{% endblock content %}
