@@ -3,7 +3,6 @@
 ## Overview
 Tumblrダッシュボードからライク・リブログの合計数が多いポスト順に抽出してランキング形式で表示する．  
 dashboard_ranking makes your Tumblr dashboard's daily ranking.  
-[Ex.](http://lime-sandwich.com/photo)
 
 ## Description
 現状対応しているポストの形態は画像ポストのみです．
